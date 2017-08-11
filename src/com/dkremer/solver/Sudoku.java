@@ -75,6 +75,19 @@ public class Sudoku {
         ).filter(x -> x > 0 );
     }
 
+    public Boolean isComplete(){
+        Boolean is_complete = true;
+        for (int i=0; i<9; i++){
+            is_complete = is_complete && validateSet(this.getSquare(i));
+            is_complete = is_complete && validateSet(this.getColumn(i));
+            is_complete = is_complete && validateSet(this.getLine(i));
+            if (!is_complete){
+                return false;
+            }
+        }
+        return true;
+    }
+
     public Integer [] getColumn(int column_pos){
         Integer [] tmpCol = new Integer[9];
         for (int i=0; i<9; i++) {
@@ -128,5 +141,13 @@ public class Sudoku {
             }
             System.out.println("");
         }
+    }
+
+    public void setValue(int i, int j, Integer answer) {
+        grid[i][j] = answer;
+    }
+
+    public Integer getValue(int i, int j) {
+        return grid[i][j];
     }
 }

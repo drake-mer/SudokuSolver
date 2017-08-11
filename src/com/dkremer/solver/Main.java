@@ -1,38 +1,23 @@
 package com.dkremer.solver;
 
-
+import com.dkremer.solver.NaiveSolver;
 import java.util.TreeSet;
 
 public class Main {
 
     public static void main(String[] args) {
         Integer [][] myGrid = {
-            {1, 2, 3, 0, 0, 0, 0, 0, 0},
-            {4, 5, 6, 0, 0, 0, 0, 0, 0},
-            {7, 8, 9, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
+            {2, 4, 0, 5, 0, 0, 7, 0, 9},
+            {7, 0, 5, 0, 1, 0, 0, 0, 0},
+            {0, 3, 0, 0, 8, 7, 0, 4, 0},
+            {0, 0, 7, 0, 0, 0, 4, 9, 0},
+            {0, 0, 6, 1, 0, 9, 8, 0, 0},
+            {0, 5, 9, 0, 0, 0, 1, 0, 0},
+            {0, 9, 0, 7, 2, 0, 0, 6, 0},
+            {0, 0, 0, 0, 9, 0, 3, 0, 1},
+            {6, 0, 2, 0, 0, 3, 0, 7, 8},
         };
-        Sudoku mySudoku = new Sudoku(myGrid);
-
-        mySudoku.print();
-        Integer [] square = mySudoku.getSquare(0);
-        for (int i=0; i<9; i++) System.out.println(square[i]);
-        TreeSet<Integer> mySet = mySudoku.possibleDigits(0,0) ;
-        assert mySet.isEmpty();
-        mySet = mySudoku.possibleDigits(8,8);
-        assert mySet.contains(9);
-        for (int i: mySet){
-            System.out.println(i);
-        }
-        mySet = mySudoku.possibleDigits(3,1);
-        assert mySet.contains(9);
-        for (int i: mySet){
-            System.out.println(i);
-        }
+        NaiveSolver my = new NaiveSolver(myGrid);
+        my.OneStepSolver();
     }
 }
