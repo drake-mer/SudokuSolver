@@ -9,9 +9,20 @@ import java.util.TreeSet;
 
 public class Sudoku {
 
+    Sudoku(){
+        this.grid = new Integer[9][9];
+    }
     Sudoku(Integer [][] grid){
         /* this is the default constructor */
         this.grid = grid;
+    }
+
+    public void setGrid(Integer [][] grid){
+        for (int i=0;i<9;i++){
+            for (int j=0; j<9; j++){
+                this.grid[i][j] = grid[i][j];
+            }
+        }
     }
 
     /* this is an unitialized Sudoku */
@@ -124,7 +135,7 @@ public class Sudoku {
         return (!containsZero && sum==45);
     }
 
-    public Boolean isLineValid(int row_number){
+    public boolean isLineValid(int row_number){
         return validateSet(this.getLine(row_number));
     }
     public boolean isColumnValid(int column_pos){
@@ -136,9 +147,7 @@ public class Sudoku {
 
     public void print(){
         for (int i=0; i<9; i++){
-            for (int j=0 ; j<9 ; j++){
-                System.out.print(this.grid[i][j] + " ");
-            }
+            for (int j=0 ; j<9 ; j++) System.out.printf("%d ", this.grid[i][j]);
             System.out.println("");
         }
     }
